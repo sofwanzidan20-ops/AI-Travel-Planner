@@ -1,0 +1,5 @@
+{
+  "name": "AI Travel Planner",
+  "description": "An application that generates a personalized travel itinerary using AI. Users can specify their destination, duration of the trip, and their interests to receive a detailed day-by-day plan.",
+  "requestFramePermissions": []
+}
