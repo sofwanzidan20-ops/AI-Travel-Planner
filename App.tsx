@@ -1,10 +1,16 @@
-
 import React, { useState } from 'react';
 import InputForm from './components/InputForm';
 import ItineraryCard from './components/ItineraryCard';
 import { generateItinerary } from './services/geminiService';
 import { ItineraryDay } from './types';
 import BudgetSummary from './components/BudgetSummary';
+
+declare global {
+  interface Window {
+    jspdf: any;
+    html2canvas: any;
+  }
+}
 
 const App: React.FC = () => {
   const [destination, setDestination] = useState('');
@@ -47,8 +53,8 @@ const App: React.FC = () => {
     setError(null);
 
     try {
-        const { jsPDF } = (window as any).jspdf;
-        const canvas = await (window as any).html2canvas(itineraryElement, {
+        const { jsPDF } = window.jspdf;
+        const canvas = await window.html2canvas(itineraryElement, {
             scale: 2, // Higher resolution for better quality
             logging: false,
             useCORS: true,
