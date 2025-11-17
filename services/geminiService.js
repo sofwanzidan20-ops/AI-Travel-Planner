@@ -1,4 +1,3 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
 
 if (!process.env.API_KEY) {
@@ -63,8 +62,8 @@ IMPORTANT: The entire response, including all text in the JSON output (titles, d
         throw new Error("Received an empty response from the AI.");
     }
 
-    // Sometimes the model might wrap the JSON in \`\`\`json ... \`\`\`
-    const cleanedJson = itineraryJson.replace(/^ \`\`\`json\s*/, '').replace(/\`\`\` \s*$/, '');
+    // Sometimes the model might wrap the JSON in ```json ... ```
+    const cleanedJson = itineraryJson.replace(/^```json\s*/, '').replace(/```\s*$/, '');
     
     const itineraryData = JSON.parse(cleanedJson);
     return itineraryData;
